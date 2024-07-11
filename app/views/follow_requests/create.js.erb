@@ -1,5 +1,7 @@
 console.log("Followed")
 
-var revertFollowForm = $("<%= j(render "follow_requests/follow_unfollow", sender: @follow_request.sender, recipient: @follow_request.recipient) %>" )
+var oldFollowForm = $(".<%= dom_id(@follow_request.sender) %>_<%= dom_id(@follow_request.recipient) %>_follow_unfollow")
 
-$("#follow_request_form").replaceWith(revertFollowForm)
+var newFollowForm = $("<%= j(render "follow_requests/follow_unfollow", sender: @follow_request.sender, recipient: @follow_request.recipient) %>" )
+
+oldFollowForm.replaceWith(newFollowForm)
